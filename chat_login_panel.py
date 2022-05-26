@@ -125,7 +125,7 @@ class LoginPanel:
         flag=0
         if u_n == "":
           return flag
-        chat_mysql.LogInformation.down_reco(u_n)
+        password1=chat_mysql.LogInformation.down_reco(u_n)
         time.sleep(2)
         # 本地图像
         user_image = face_recognition.load_image_file("faceReco/识别人脸.png")
@@ -196,6 +196,6 @@ class LoginPanel:
 
         video_capture.release()
         cv2.destroyAllWindows()
-        return flag
+        return flag,password1
 
         

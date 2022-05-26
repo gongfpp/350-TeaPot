@@ -225,14 +225,20 @@ def go_to_login_panel():
 def handding_faceing():
     # 调用chat_login_pannel模块的对象实例方法获取输入的用户名和密码
     messagebox.showwarning(title="提示", message="开始人脸识别登录,按Q退出")
-    check=login_frame.showface()
+    check,password2=login_frame.showface()
     if check==1:
         messagebox.showwarning(title="提示", message="识别成功！即将登录")
         user_name, password = login_frame.get_input()
-        go_to_main_panel(user_name)
+        if client.login_type(user_name, password2) == "1":
+            go_to_main_panel(user_name)  # 调用此类的前往聊天主界面函数，参数为用户名
+        else:
+            messagebox.showwarning(title="提示", message="登录错误！")
     else:
         messagebox.showwarning(title="提示", message="识别失败，请检查用户名")
     return 
+
+
+
 
 #注册时人脸拍照函数        
 def register_photo():

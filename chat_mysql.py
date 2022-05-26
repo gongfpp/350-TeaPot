@@ -87,7 +87,14 @@ class LogInformation(object):
             fout.write(cursor.fetchone()[3])  # 写头像数据
             fout.close()  # 关闭流
             cursor.close()  # 关闭游标
+
+            cursor = conn.cursor()  # 取得数据库游标
+            sql2 = "SELECT * FROM user_information where user_name = '%s' " % (user_name)  # 数据库语言，按用户名查找
+            cursor.execute(sql2)   # 游标执行数据库语言
+            password=cursor.fetchone()[1]
+            cursor.close()  # 关闭游标
             conn.close()   # 关闭数据库
+            return password
         except pymysql.Error as e:
             print("Error %d: %s" % (e.args[0], e.args[1]))
             sys.exit(1)

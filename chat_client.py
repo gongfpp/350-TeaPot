@@ -7,7 +7,7 @@ class ChatSocket:
         print("初始化tcp客户端")
         # 创建对象的同时，会创建连接服务器的socket
         self.client_socket = socket.socket()  # 创建socket
-        self.client_socket.connect(('121.37.186.99', 5000))  # 请求连接服务器
+        self.client_socket.connect(('127.0.0.1', 5000))  # 请求连接服务器127.0.0.1/121.37.186.99
 
     # 请求登录类型
     def login_type(self, user_name, password):

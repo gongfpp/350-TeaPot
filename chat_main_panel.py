@@ -3,7 +3,7 @@ import tkinter.font as tf  # 处理字体样式和颜色的类
 import time
 import chat_mysql  # 导入处理mysql的模块
 from PIL import Image  # 导入处理图像模块
-
+import game
 # 主界面类
 class MainPanel:
     # 构造方法，参数为按钮事件处理函数，从客户端main传进来，可以实现按钮回调
@@ -163,6 +163,11 @@ class MainPanel:
                          width=13, height=2, font=('黑体', 12),)
         botton5.place(x=40, y=650)
 
+        # 五子棋游戏开始按钮
+        btn_goBang = Button(self.main_frame,  text="开始五子棋！", command=self.btn_gobang_start_clicked, bg="#00BFFF",
+                            fg="white", width=12, height=2, font=('黑体', 11))
+        btn_goBang.place(x=280, y=525)
+
     # 定义器静态函数，用于刷新gif的帧
     @staticmethod
     def update(idx):
@@ -175,6 +180,10 @@ class MainPanel:
     def load(self):
         MainPanel.update(0)
         self.main_frame.mainloop()
+
+    # 五子棋开始按钮处理事件
+    def btn_gobang_start_clicked(self):
+        game.main()
 
     # 聊天记录按钮处理事件实例方法
     def create_window(self):
@@ -211,7 +220,9 @@ class MainPanel:
         botton = Button(top1,  text="清空聊天记录", command=self.clear_chatting_records, bg="#00BFFF",
                         fg="white", width=12, height=2, font=('黑体', 11))
         botton.place(x=490, y=600)
-
+        
+        
+        
         # 调用实例方法显示聊天记录
         self.show_chatting_records()
 

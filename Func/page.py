@@ -165,7 +165,7 @@ def play_online(h):
 
     server_ip = StringVar()
     ip = ttk.Entry(input_ip, textvariable=server_ip, width=30)
-    ip.insert(0, getIPv4())  # 插入默认值
+    ip.insert(0, "121.37.186.99")  # 插入默认值
     ip.grid(row=1, padx=10)
 
     def connect():
